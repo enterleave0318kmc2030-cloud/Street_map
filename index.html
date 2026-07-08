@@ -2,12 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ヘビ＆日陰マップ</title>
+  <title>オープンデータマップ</title>
 
+  <!-- Leaflet のCSSを読み込む -->
   <link rel="stylesheet"
         href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
   <style>
+    /* 地図を画面いっぱいに表示 */
     html, body {
       margin: 0;
       height: 100%;
@@ -24,54 +26,105 @@
 
 <div id="map"></div>
 
+<!-- Leaflet のJavaScriptを読み込む -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
+
+//
+// ================================
+// ① 地図の初期設定
+// ================================
+//
+// setView([緯度, 経度], ズームレベル)
+// 中心位置を変更するときはここを書き換える
+//
 const map = L.map('map').setView(
-    [33.9720, 134.3611],
+    [33.9720, 134.3611],   // 神山まるごと高専
     15
 );
 
+//
+// ================================
+// ② 背景地図（OpenStreetMap）
+// ================================
+//
 L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
-        attribution: '&copy; OpenStreetMap contributors'
+        attribution:
+        '&copy; OpenStreetMap contributors'
     }
 ).addTo(map);
 
-fetch("./data/Snake&sun_2.geojson")
+//
+// ================================
+// ③ GeoJSONを読み込む
+// ================================
+//
+// dataフォルダのGeoJSONを読み込む
+//
+// 例)
+// data/street_lamps.geojson
+// data/toilet.geojson
+//
+fetch("./data/street_lamps.geojson")
+
 .then(response => response.json())
+
 .then(data => {
 
+    //
+    // ================================
+    // ④ GeoJSONを地図へ追加
+    // ================================
+    //
     const layer = L.geoJSON(data, {
 
-        onEachFeature: function(feature, layer) {
+        //
+        // マーカーをクリックしたときに表示する内容
+        //
+        onEachFeature: function(feature, layer){
+
             const p = feature.properties;
 
+            //
+            // ↓↓↓
+            // ここを自由に編集してください
+            //
             layer.bindPopup(`
-                <b>${p.place ?? "場所不明"}</b><br><br>
+                <b>${p.name}</b><br>
 
-                ID：${p.id ?? "不明"}<br>
-                日付：${p.date ?? "不明"}<br>
-                時間：${p.time ?? "不明"}<br>
-                状況：${p.situation ?? "不明"}<br>
-                ヘビの種類：${p.snake_type ?? "不明"}<br>
-                頭数：${p.count ?? "不明"}<br>
-                体長：${p.length ?? "不明"}
+                ID：${p.id}<br>
+                日付：${p.date}<br>
+                時間：${p.time}<br>
+                状況：${p.situation}<br>
+                ヘビの種類：${p.snake_type}<br>
+                頭数：${p.count}<br>
+                体長：${p.length}
             `);
+
         }
 
     }).addTo(map);
 
-    if (layer.getBounds().isValid()) {
-        map.fitBounds(layer.getBounds());
-    }
+    //
+    // ================================
+    // ⑤ GeoJSON全体が見えるように拡大縮小
+    // ================================
+    //
+    map.fitBounds(layer.getBounds());
 
 })
+
 .catch(error => {
+
     console.error(error);
-    alert("GeoJSONを読み込めませんでした。ファイル名や保存場所を確認してください。");
+
+    alert("GeoJSONを読み込めませんでした。");
+
 });
+
 </script>
 
 </body>

@@ -1,0 +1,131 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.362465,
+          33.972804
+        ]
+      },
+      "properties": {
+        "id": "001",
+        "name": "HOME敷地内"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.3599412,
+          33.9737855
+        ]
+      },
+      "properties": {
+        "id": "003",
+        "name": "CLASSの入り口前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.3599412,
+          33.9737855
+        ]
+      },
+      "properties": {
+        "id": "005",
+        "name": "office教室棟の入口前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.362465,
+          33.972804
+        ]
+      },
+      "properties": {
+        "id": "006",
+        "name": "HOME体育館前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.3599412,
+          33.9737855
+        ]
+      },
+      "properties": {
+        "id": "007",
+        "name": "office教室棟の入口前"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.363464,
+          33.973016
+        ]
+      },
+      "properties": {
+        "id": "009",
+        "name": "給食センター前の坂"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.3601742,
+          33.97384345
+        ]
+      },
+      "properties": {
+        "id": "010",
+        "name": "Officeの段差"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.3625561,
+          33.9728469
+        ]
+      },
+      "properties": {
+        "id": "011",
+        "name": "食堂裏の室外機"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.360312,
+          33.973678
+        ]
+      },
+      "properties": {
+        "id": "012",
+        "name": "officeの靴箱の脇"
+      }
+    }
+  ]
+}
